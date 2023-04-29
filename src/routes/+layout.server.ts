@@ -1,3 +1,4 @@
+import type { Actions } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types'
 
 // get `locals.user` and pass it to the `page` store

@@ -34,8 +34,6 @@ export const actions: Actions = {
         if (!cookiesmap)
             return fail(400, { "msg": "username or password is wrong" });
         let res_data = await res.json();
-        console.log(res_data);
-        console.log(res_data.user["_id"]);
         cookies.set("sessionId", cookiesmap.sessionId, {
             path: '/',
             httpOnly: true,
@@ -44,20 +42,18 @@ export const actions: Actions = {
             secure: true,
             encode: (s) => s,
         });
-        cookies.set("_id", res_data.user["_id"], { path: "/" });
-        cookies.set("username", res_data.user["username"], { path: "/" });
-        cookies.set("roles", res_data.user["roles"], { path: "/" });
+        cookies.set("_id", res_data.user["_id"], { path: "/", expires: new Date(cookiesmap.Expires) });
+        cookies.set("username", res_data.user["username"], { path: "/", expires: new Date(cookiesmap.Expires) });
+        cookies.set("roles", res_data.user["roles"], { path: "/", expires: new Date(cookiesmap.Expires), });
 
     },
-    signok: async ({ fetch }) =>
+    logout: async ({ cookies }) =>
     {
-        let res: Response = await fetch(`http://localhost:5000/api/v1/getCart`, {
-            method: "GET",
-            headers: {
-                credentials: 'include',
-            }
-        });
-        let data = await res.json();
-        console.log(data);
+        console.log(cookies.getAll());
+        cookies.delete("sessionId", { path: "/" });
+        cookies.delete("_id", { path: "/" });
+        cookies.delete("username", { path: "/" });
+        cookies.delete("roles", { path: "/" });
     }
+
 };

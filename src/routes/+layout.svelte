@@ -9,6 +9,11 @@
 	import '../app.postcss';
 	import { AppBar } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import type { PageData } from './$types';
+	import { Avatar } from '@skeletonlabs/skeleton';
+	import { enhance } from '$app/forms';
+
+	export let data: PageData;
 </script>
 
 <AppBar
@@ -20,18 +25,26 @@
 	<svelte:fragment slot="lead">
 		<a
 			href="/"
-			class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap dark:text-white"
+			class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap tracking-widest dark:text-white"
 			>SWIFTR</a
 		></svelte:fragment
 	>
 	<div class="flex gap-7 font-medium">
 		<a href="/" class="hover:text-primary-500">Home</a>
-		<a href="/" class="hover:text-primary-500">Search</a>
-		<a href="/" class="hover:text-primary-500">About</a>
+		<a href="/services" class="hover:text-primary-500">Services</a>
+		<a href="/cart" class="hover:text-primary-500">Cart</a>
 	</div>
 	<svelte:fragment slot="trail">
 		<LightSwitch />
-		<a href="/login" class="btn variant-filled-primary">Login</a>
+		{#if data.user.isLoggedIn}
+			<Avatar initials={data.user.username} background="bg-primary-500" width="w-10" />
+			<p>{data.user.username}</p>
+			<form method="POST" action="/login?/logout" use:enhance>
+				<button type="submit" class="btn variant-filled-primary">Logout</button>
+			</form>
+		{:else}
+			<a href="/login" class="btn variant-filled-primary">Login</a>
+		{/if}
 	</svelte:fragment>
 </AppBar>
 
