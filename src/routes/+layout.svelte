@@ -7,7 +7,7 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.css';
 	import '../app.postcss';
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { AppBar, Toast } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
 	import { Avatar } from '@skeletonlabs/skeleton';
@@ -47,5 +47,5 @@
 		{/if}
 	</svelte:fragment>
 </AppBar>
-
+<Toast />
 <slot />
