@@ -1,6 +1,6 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async ({ fetch }) =>
+export const load: PageServerLoad = async ({ fetch }) =>
 {
     let res: Response = await fetch(`http://localhost:5000/api/v1/services`, {
         method: "GET",

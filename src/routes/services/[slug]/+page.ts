@@ -8,7 +8,6 @@ export const load: PageLoad = async ({ fetch, params }) =>
         credentials: 'include',
     })
     let data = await res.json();
-    console.log(data);
     data.slug = params.slug;
 
     return data;

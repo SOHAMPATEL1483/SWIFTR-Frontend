@@ -54,6 +54,8 @@ export const actions: Actions = {
         cookies.delete("_id", { path: "/" });
         cookies.delete("username", { path: "/" });
         cookies.delete("roles", { path: "/" });
+        let res: Response = await fetch("http://localhost:5000/api/v1/auth/logout");
+        console.log(await res.json());
     }
 
 };
