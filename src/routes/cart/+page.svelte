@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { Avatar } from '@skeletonlabs/skeleton';
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import { enhance } from '$app/forms';
+	import { Toast, toastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
+	export let form: ActionData;
+	//@ts-ignore
+	$: if (form) toastStore.trigger({ message: form?.msg });
 </script>
 
 <div class=" font-poppins flex flex-wrap">

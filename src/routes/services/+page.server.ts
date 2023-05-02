@@ -1,8 +1,10 @@
 import type { PageServerLoad } from './$types';
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export const load: PageServerLoad = async ({ fetch }) =>
 {
-    let res: Response = await fetch(`http://localhost:5000/api/v1/services`, {
+    let res: Response = await fetch(`${process.env.API_URL}/api/v1/services`, {
         method: "GET",
         credentials: 'include',
     });

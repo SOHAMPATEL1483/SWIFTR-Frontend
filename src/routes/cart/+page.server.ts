@@ -8,7 +8,10 @@ export const actions: Actions = {
             method: 'DELETE',
             credentials: 'include',
         })
-        console.log(await res.json());
+        let data = await res.json();
+        if ('data' in data)
+            return { 'msg': 'Successfully removed item from cart' }
+
     }
 
 };
