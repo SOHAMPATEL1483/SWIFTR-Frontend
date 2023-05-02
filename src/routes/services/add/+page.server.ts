@@ -1,7 +1,16 @@
+import { error } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+export const load: PageServerLoad = async ({ cookies }) =>
+{
+    if (cookies.get('roles') != 'provider')
+        throw error(404, {
+            message: 'You Can\'t access this page because you are not a provider'
+        });
+
+};
 
 export const actions: Actions = {
     AddService: async ({ request, fetch }) =>
