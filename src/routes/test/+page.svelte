@@ -12,9 +12,6 @@
 		let res: Response = await fetch('http://localhost:5000/api/v1/uploadImage/', {
 			method: 'POST',
 			body: formData,
-			// headers: {
-			// 	'Content-Type': 'multipart/form'
-			// }
 			credentials: 'include'
 		});
 		console.log(await res.json());
