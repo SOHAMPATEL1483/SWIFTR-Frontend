@@ -37,8 +37,10 @@
 	<svelte:fragment slot="trail">
 		<LightSwitch />
 		{#if data.user.isLoggedIn}
-			<Avatar initials={data.user.username} background="bg-primary-500" width="w-10" />
-			<p>{data.user.username}</p>
+			<a href="/user" class="flex gap-3">
+				<Avatar initials={data.user.username} background="bg-primary-500" width="w-10" />
+				<p class="my-auto">{data.user.username}</p>
+			</a>
 			<form method="POST" action="/login?/logout" use:enhance>
 				<button type="submit" class="btn variant-filled-primary">Logout</button>
 			</form>

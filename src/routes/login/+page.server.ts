@@ -1,5 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 function getCookiesMap(cookiesString: any)
 {
@@ -22,7 +24,7 @@ export const actions: Actions = {
     {
         let data = Object.fromEntries(await request.formData());
         console.log(data);
-        let res: Response = await fetch(`http://localhost:5000/api/v1/auth/login`, {
+        let res: Response = await fetch(`${process.env.API_URL}/api/v1/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -54,7 +56,7 @@ export const actions: Actions = {
         cookies.delete("_id", { path: "/" });
         cookies.delete("username", { path: "/" });
         cookies.delete("roles", { path: "/" });
-        let res: Response = await fetch("http://localhost:5000/api/v1/auth/logout");
+        let res: Response = await fetch(`${process.env.API_URL}/api/v1/auth/logout`);
         console.log(await res.json());
     }
 

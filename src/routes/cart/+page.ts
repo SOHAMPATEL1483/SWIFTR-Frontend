@@ -1,8 +1,10 @@
 import type { PageLoad } from './$types';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 export const load: PageLoad = async ({ fetch }) =>
 {
-    let res: Response = await fetch(`http://localhost:5000/api/v1/getCart`, {
+    let res: Response = await fetch(`${process.env.API_URL}/api/v1/getCart`, {
         method: "GET",
         credentials: 'include',
     });

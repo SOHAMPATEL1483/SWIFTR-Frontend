@@ -11,6 +11,10 @@
 	$: if (form) toastStore.trigger({ message: form?.msg });
 </script>
 
+<div class="flex mx-5 mt-5 font-poppins justify-between">
+	<p class="unstyled my-auto text-xl font-bold dark:text-slate-300">Your Cart</p>
+	<button class="btn variant-filled-primary">Checkout</button>
+</div>
 <div class=" font-poppins flex flex-wrap">
 	{#each data.data as item}
 		<div class="card card-hover max-w-[320px] p-5 m-5 divide-y-2 divide-slate-600">
