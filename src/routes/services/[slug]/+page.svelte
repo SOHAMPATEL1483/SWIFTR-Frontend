@@ -17,11 +17,7 @@
 
 <div class="flex gap-28 mx-auto w-fit my-20 font-poppins">
 	<div class="my-auto">
-		<img
-			src="https://res.cloudinary.com/dnteevm9m/image/upload/v1682841176/swiftr/testing/irgulxd0cwvnpmuupazz.jpg"
-			alt=""
-			class="object-contain w-full max-h-80"
-		/>
+		<img src={data.service.image} alt="" class="object-contain w-full max-h-80 rounded-md" />
 	</div>
 	<div class="my-auto">
 		<p class="unstyled text-3xl font-semibold text-center mb-5">{data.service.name}</p>

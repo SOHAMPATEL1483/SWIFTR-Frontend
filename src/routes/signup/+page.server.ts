@@ -1,8 +1,6 @@
 import { fail, json, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import * as dotenv from 'dotenv';
-dotenv.config();
-
+import API_URL from '../../stores/store';
 export const load = (async () =>
 {
     return {};
@@ -13,7 +11,7 @@ export const actions: Actions = {
     signup: async ({ cookies, request }) =>
     {
         let formdata = await request.formData();
-        let res: Response = await fetch(`${process.env.API_URL}/api/v1/auth/register`, {
+        let res: Response = await fetch(`${API_URL}/api/v1/auth/register`, {
             method: 'POST',
             body: formdata,
         })
@@ -24,6 +22,5 @@ export const actions: Actions = {
         }
         else
             return fail(400, { msg: data.msg });
-
     }
 };

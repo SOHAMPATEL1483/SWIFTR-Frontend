@@ -1,7 +1,7 @@
 <script>
 	import { Avatar } from '@skeletonlabs/skeleton';
 	/**
-	 * @type {{ name: any; _id:any;description: any; price: any; avgRating: any; noOfReviews: any; user: { username: any; }; createdAt: any; }}
+	 * @type {{ name: any; image:any ;_id:any;description: any; price: any; avgRating: any; noOfReviews: any; user: { username: any; }; createdAt: any; }}
 	 */
 	export let service;
 	if (!service.user) {
@@ -14,11 +14,7 @@
 <a class="unstyled" href={'/services/' + service['_id']}>
 	<div class="card card-hover max-w-[320px] p-5 m-5">
 		<div class="mb-5">
-			<img
-				src="https://res.cloudinary.com/dnteevm9m/image/upload/v1682841176/swiftr/testing/irgulxd0cwvnpmuupazz.jpg"
-				alt=""
-				class="object-contain w-full max-h-64"
-			/>
+			<img src={service.image} alt="" class="object-contain w-full max-h-64" />
 		</div>
 		<div class="divide-y-2 divide-slate-600">
 			<div class="mb-3">

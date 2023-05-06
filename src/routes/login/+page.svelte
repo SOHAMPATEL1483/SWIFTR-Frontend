@@ -1,10 +1,17 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { onMount } from 'svelte';
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
+	import { Toast, toastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	// export let data: PageData;
+	export let form: ActionData;
+	//@ts-ignore
+	$: if (form) toastStore.trigger({ message: form?.msg, background: 'variant-filled-error' });
 </script>
 
+<!-- <pre>
+    {JSON.stringify(form, null, 4)}
+</pre> -->
 <div class="container h-full mx-auto flex justify-center items-center font-poppins">
 	<div class="card w-1/4 p-5">
 		<!-- heading -->

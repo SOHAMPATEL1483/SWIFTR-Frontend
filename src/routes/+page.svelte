@@ -2,52 +2,32 @@
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	// export let data: PageData;
 </script>
 
-<pre>
+<!-- <pre>
 	{JSON.stringify(data.user)}
-</pre>
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-5">
-		<h1>Let's get cracking bones!</h1>
-		<p>Start by exploring:</p>
-		<ul>
-			<li>
-				<code>/src/routes/+layout.svelte</code> - barebones layout, the CSS import order is critical!
-			</li>
-			<li>
-				<code>/src/app.postcss</code> - minimal css to make the page full screen, may not be relevant
-				for your project
-			</li>
-			<li><code>/src/routes/+page.svelte</code> - this page, you can replace the contents</li>
-		</ul>
-		<!-- <div class="card p-5"> -->
-		<label class="label">
-			<span>Input</span>
-			<input class="input rounded-md" type="text" placeholder="Input" />
-		</label>
-
-		<label class="label">
-			<span>Select</span>
-			<select class="select">
-				<option value="1">Option 1</option>
-				<option value="2">Option 2</option>
-				<option value="3">Option 3</option>
-				<option value="4">Option 4</option>
-				<option value="5">Option 5</option>
-			</select>
-		</label>
-		<button class="btn variant-filled-secondary">Button</button>
+</pre> -->
+<div class="font-poppins max-w-2xl mt-48 mx-auto">
+	<p class="unstyled text-6xl font-bold mb-5 tracking-wide">
+		Effortlessly manage <br /> your home <br /> services with us.
+	</p>
+	<p>
+		From routine cleaning to complex repairs and installations, trust our team of skilled and
+		experienced service providers to handle all your home service needs with precision and care.
+	</p>
+	<div class="my-5">
+		<a href="/services" class="btn variant-filled-primary px-10 mr-2">Get Started</a>
+		<a href="/login" class="btn variant-filled-secondary px-10">Login</a>
 	</div>
-	<!-- </div> -->
 </div>
+<div
+	class="bgimage absolute top-0 -z-10 w-full h-full bg-no-repeat bg-cover invisible md:visible"
+	style="background-position-y: 50%; background-image: linear-gradient(rgba(30, 41, 59, 0.6),rgba(30, 41, 59, 0.6)), url(/homepage.png)"
+/>
 
-<div class="card max-w-fit">
-	<header class="card-header">(header)</header>
-	<section class="p-4">(content)</section>
-	<footer class="card-footer">(footer)</footer>
-</div>
-
-<Avatar initials="JD" background="bg-primary-500" />
+<style>
+	.bgimage {
+		@apply bg-surface-50-900-token;
+	}
+</style>

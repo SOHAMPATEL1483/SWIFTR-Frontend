@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import API_URL from '../../stores/store';
 	import type { ActionData, PageData } from './$types';
 	import { enhance } from '$app/forms';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
@@ -9,11 +10,22 @@
 	export let form: ActionData;
 	//@ts-ignore
 	$: if (form) toastStore.trigger({ message: form?.msg });
+
+	const checkout = async () => {
+		let res: Response = await fetch(`${API_URL}/api/v1/stripe/checkout/`, {
+			method: 'POST',
+			credentials: 'include',
+			redirect: 'follow'
+		});
+		let data = await res.json();
+		console.log(data.url);
+		window.location = data.url;
+	};
 </script>
 
 <div class="flex mx-5 mt-5 font-poppins justify-between">
 	<p class="unstyled my-auto text-xl font-bold dark:text-slate-300">Your Cart</p>
-	<button class="btn variant-filled-primary">Checkout</button>
+	<button class="btn variant-filled-primary" on:click={checkout}>Checkout</button>
 </div>
 <div class=" font-poppins flex flex-wrap">
 	{#each data.data as item}

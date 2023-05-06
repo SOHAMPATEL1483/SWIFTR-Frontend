@@ -1,7 +1,3 @@
-<script lang="ts">
-	import type { PageData } from './$types';
-
-	// export let data: PageData;
-</script>
-
-<h1>Success</h1>
+<div class="w-fit h-fit mx-auto mt-24">
+	<h1 class="unstyled font-poppins text-4xl">Success</h1>
+</div>

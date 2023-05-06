@@ -1,7 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import API_URL from '../../stores/store';
 
 function getCookiesMap(cookiesString: any)
 {
@@ -24,7 +23,7 @@ export const actions: Actions = {
     {
         let data = Object.fromEntries(await request.formData());
         console.log(data);
-        let res: Response = await fetch(`${process.env.API_URL}/api/v1/auth/login`, {
+        let res: Response = await fetch(`${API_URL}/api/v1/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -33,9 +32,17 @@ export const actions: Actions = {
             body: JSON.stringify(data),
         });
         let cookiesmap = getCookiesMap(res.headers.get('set-cookie'));
-        if (!cookiesmap)
-            return fail(400, { "msg": "username or password is wrong" });
+        // if (!cookiesmap)
+        //     return fail(400, { "msg": "username or password is wrong" });
         let res_data = await res.json();
+        console.log(res_data);
+        if ('user' in res_data)
+        {
+        }
+        else
+        {
+            return fail(400, { msg: res_data.msg });
+        }
         cookies.set("sessionId", cookiesmap.sessionId, {
             path: '/',
             httpOnly: true,
@@ -56,7 +63,7 @@ export const actions: Actions = {
         cookies.delete("_id", { path: "/" });
         cookies.delete("username", { path: "/" });
         cookies.delete("roles", { path: "/" });
-        let res: Response = await fetch(`${process.env.API_URL}/api/v1/auth/logout`);
+        let res: Response = await fetch(`${API_URL}/api/v1/auth/logout`);
         console.log(await res.json());
     }
 
