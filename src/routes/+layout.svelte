@@ -29,11 +29,13 @@
 			>SWIFTR</a
 		></svelte:fragment
 	>
-	<div class="flex gap-7 font-medium">
-		<a href="/" class="hover:text-primary-500">Home</a>
-		<a href="/services" class="hover:text-primary-500">Services</a>
-		<a href="/cart" class="hover:text-primary-500">Cart</a>
-	</div>
+	<svelte:fragment>
+		<div class="flex gap-7 font-medium">
+			<a href="/" class="hover:text-primary-500">Home</a>
+			<a href="/services" class="hover:text-primary-500">Services</a>
+			<a href="/cart" class="hover:text-primary-500">Cart</a>
+		</div>
+	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<LightSwitch />
 		{#if data.user.isLoggedIn}

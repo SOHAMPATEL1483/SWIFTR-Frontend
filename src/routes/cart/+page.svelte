@@ -52,10 +52,10 @@
 			</div>
 		</div>
 	{:else}
-		<p>No items in Cart</p>
+		<p class="unstyled text-xl mt-16 mx-auto">No items in Cart</p>
 	{/each}
 </div>
 
-<pre>
+<!-- <pre>
     {JSON.stringify(data, null, 4)}
-</pre>
+</pre> -->
