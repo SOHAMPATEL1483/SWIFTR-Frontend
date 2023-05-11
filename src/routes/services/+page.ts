@@ -1,7 +1,7 @@
 import API_URL from '../../stores/store';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ url }) =>
+export const load: PageLoad = async ({ url, fetch }) =>
 {
     let query = url.searchParams.get('search');
     if (!query) query = "";

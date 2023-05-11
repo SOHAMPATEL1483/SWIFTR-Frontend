@@ -9,7 +9,7 @@
 	if (!data.services) data.services = [];
 </script>
 
-<form method="get" use:enhance>
+<form method="get">
 	<div class="flex w-1/3 gap-2 ml-auto mt-4 mr-10">
 		<input class="input px-3" type="text" placeholder="Search..." name="search" />
 		<button type="submit" class="btn variant-filled-primary">Search</button>

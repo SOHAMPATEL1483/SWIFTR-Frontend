@@ -15,7 +15,6 @@ export const actions: Actions = {
     AddService: async ({ request, fetch }) =>
     {
         let formdata = await request.formData();
-        console.log(formdata);
         let res: Response = await fetch(`${API_URL}/api/v1/uploadImage/`, {
             method: 'POST',
             body: formdata,
@@ -28,6 +27,5 @@ export const actions: Actions = {
             body: formdata,
             credentials: 'include'
         });
-        console.log(await res2.json());
     }
 };
