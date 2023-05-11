@@ -1,12 +1,22 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { ActionData, PageData } from './$types';
+	import type { ActionData, PageData, SubmitFunction } from './$types';
+	import Spinner from '../../lib/spinner.svelte';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	// export let data: PageData;
 	export let form: ActionData;
 	//@ts-ignore
 	$: if (form) toastStore.trigger({ message: form?.msg, background: 'variant-filled-error' });
+	let loading = false;
+	const custom_enhance: SubmitFunction = () => {
+		loading = true;
+
+		return async ({ update }) => {
+			loading = false;
+			await update();
+		};
+	};
 </script>
 
 <!-- <pre>
@@ -17,7 +27,7 @@
 		<!-- heading -->
 		<p class="text-center font-bold font-poppins text-4xl unstyled">Sign in</p>
 		<!-- form -->
-		<form action="?/signin" method="post" use:enhance>
+		<form action="?/signin" method="post" use:enhance={custom_enhance}>
 			<label class="username my-5">
 				<span>Username</span>
 				<input
@@ -38,7 +48,12 @@
 					required
 				/>
 			</label>
-			<button type="submit" class="btn variant-filled-primary w-full">Signin</button>
+			<button type="submit" class="btn variant-filled-primary w-full">
+				{#if loading}
+					<Spinner />
+				{/if}
+				Signin
+			</button>
 		</form>
 		<p class="mt-5">Don't have Account? <a href="/signup">Signup</a></p>
 	</div>

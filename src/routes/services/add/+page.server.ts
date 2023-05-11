@@ -4,7 +4,7 @@ import API_URL from '../../../stores/store';
 
 export const load: PageServerLoad = async ({ cookies }) =>
 {
-    if (cookies.get('roles') != 'provider')
+    if (cookies.get('roles') == 'user')
         throw error(404, {
             message: 'You Can\'t access this page because you are not a provider'
         });

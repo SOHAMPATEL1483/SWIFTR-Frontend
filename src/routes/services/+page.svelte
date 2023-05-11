@@ -6,7 +6,7 @@
 	export let data: PageData;
 </script>
 
-<div class=" font-poppins flex flex-wrap">
+<div class="font-poppins flex flex-wrap justify-center">
 	{#each data.services as service}
 		<ServiceCard {service} />
 	{/each}

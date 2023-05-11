@@ -13,8 +13,8 @@
 	<div class="my-auto">
 		<p class="unstyled text-3xl font-bold">{data.user.username}</p>
 		<p class="dark:text-slate-300">{data.user.roles}</p>
-		{#if data.user.roles == 'provider'}
-			<button class="btn variant-filled-primary my-5">Add Service</button>
+		{#if data.user.roles != 'user'}
+			<a href="/services/add" class="btn variant-filled-primary my-5">Add Service</a>
 		{/if}
 	</div>
 </div>

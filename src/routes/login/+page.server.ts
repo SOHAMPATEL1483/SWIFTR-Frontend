@@ -1,4 +1,4 @@
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import API_URL from '../../stores/store';
 
@@ -54,11 +54,11 @@ export const actions: Actions = {
         cookies.set("_id", res_data.user["_id"], { path: "/", expires: new Date(cookiesmap.Expires) });
         cookies.set("username", res_data.user["username"], { path: "/", expires: new Date(cookiesmap.Expires) });
         cookies.set("roles", res_data.user["roles"], { path: "/", expires: new Date(cookiesmap.Expires), });
+        throw redirect(300, "/services")
 
     },
     logout: async ({ cookies }) =>
     {
-        console.log(cookies.getAll());
         cookies.delete("sessionId", { path: "/" });
         cookies.delete("_id", { path: "/" });
         cookies.delete("username", { path: "/" });

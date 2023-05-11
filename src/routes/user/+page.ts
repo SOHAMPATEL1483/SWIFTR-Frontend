@@ -6,5 +6,8 @@ export const load: PageLoad = async ({ fetch }) =>
         method: 'GET',
         credentials: 'include',
     })
-    return await res.json();
+    let data = await res.json();
+    //@ts-ignore
+    data.orders.sort((a, b) => a.updatedAt > b.updatedAt ? -1 : 1)
+    return data;
 }

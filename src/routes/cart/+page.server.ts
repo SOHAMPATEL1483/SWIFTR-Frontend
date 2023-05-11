@@ -1,5 +1,14 @@
-import { redirect, type Actions } from "@sveltejs/kit";
+import { redirect, type Actions, error } from "@sveltejs/kit";
 import API_URL from "../../stores/store";
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async ({ cookies }) =>
+{
+    if (!cookies.get('sessionId'))
+        throw error(404, {
+            message: 'You must be logged in to view this page'
+        });
+}
 
 export const actions: Actions = {
     removeItem: async ({ request, fetch }) =>

@@ -24,3 +24,8 @@
 <form action="http://localhost:5000/api/v1/uploadImage" method="POST" enctype="multipart/form">
 	<input type="submit" value="submit" />
 </form>
+
+<div class="flex justify-center center">
+    bankai
+    <p></p>
+</div>
