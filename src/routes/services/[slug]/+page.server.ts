@@ -1,4 +1,4 @@
-import { fail, json } from '@sveltejs/kit';
+import { fail, json, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import API_URL from '../../../stores/store';
 
@@ -23,6 +23,16 @@ export const actions: Actions = {
             credentials: 'include',
         });
         console.log("successfullly called api to post review");
+    },
+    RemoveService: async ({ params, fetch }) =>
+    {
+        let res: Response = await fetch(`${API_URL}/api/v1/services/${params.slug}`, {
+            method: 'DELETE',
+            credentials: 'include',
+        });
+        console.log(await res.json());
+        if (res.ok)
+            throw redirect(301, "/services")
     }
 
 };

@@ -65,6 +65,7 @@ export const actions: Actions = {
         cookies.delete("roles", { path: "/" });
         let res: Response = await fetch(`${API_URL}/api/v1/auth/logout`);
         console.log(await res.json());
+        throw redirect(301, "/");
     }
 
 };

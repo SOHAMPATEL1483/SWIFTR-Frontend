@@ -6,8 +6,14 @@ export const load: PageLoad = async ({ fetch }) =>
         method: 'GET',
         credentials: 'include',
     })
-    let data = await res.json();
+    let user_order = await res.json();
+    let res2: Response = await fetch(`${API_URL}/api/v1/stripe/getProviderOrders`, {
+        method: 'GET',
+        credentials: 'include',
+    })
+    let provider_order = await res2.json();
     //@ts-ignore
-    data.orders.sort((a, b) => a.updatedAt > b.updatedAt ? -1 : 1)
-    return data;
+    user_order.orders.sort((a, b) => a.updatedAt > b.updatedAt ? -1 : 1)
+    provider_order.sort((a: any, b: any) => a.updatedAt > b.updatedAt ? -1 : 1)
+    return { user_order, provider_order };
 }

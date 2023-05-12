@@ -1,13 +1,8 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import type { ActionData, PageData, SubmitFunction } from './$types';
+	import { enhance, type SubmitFunction } from '$app/forms';
+	import type { PageData } from './$types';
 	import Spinner from '$lib/spinner.svelte';
-	import { Toast, toastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
-	// export let data: PageData;
-	export let form: ActionData;
-	//@ts-ignore
-	$: if (form) toastStore.trigger({ message: form?.msg, background: 'variant-filled-error' });
+
 	let loading = false;
 	const custom_enhance: SubmitFunction = () => {
 		loading = true;
@@ -19,32 +14,29 @@
 	};
 </script>
 
-<!-- <pre>
-    {JSON.stringify(form, null, 4)}
-</pre> -->
 <div class="container h-full mx-auto flex justify-center items-center font-poppins">
 	<div class="card w-1/4 p-5">
 		<!-- heading -->
-		<p class="text-center font-bold font-poppins text-4xl unstyled">Sign in</p>
+		<p class="text-center font-bold font-poppins text-4xl unstyled">Change Password</p>
 		<!-- form -->
-		<form action="?/signin" method="post" use:enhance={custom_enhance}>
-			<label class="username my-5">
-				<span>Username</span>
+		<form action="?/changePassword" method="post" use:enhance={custom_enhance}>
+			<label class="oldPassword">
+				<!-- <span>Old Password</span> -->
 				<input
 					class="input rounded-md"
-					type="text"
-					placeholder="Username"
-					name="username"
+					type="password"
+					placeholder="Old Password"
+					name="oldPassword"
 					required
 				/>
 			</label>
 			<label class="Password">
-				<span>Password</span>
+				<!-- <span>New Password</span> -->
 				<input
 					class="input rounded-md"
 					type="password"
-					placeholder="Password"
-					name="password"
+					placeholder="New Password"
+					name="newPassword"
 					required
 				/>
 			</label>
@@ -52,10 +44,9 @@
 				{#if loading}
 					<Spinner />
 				{/if}
-				Signin
+				Change Password
 			</button>
 		</form>
-		<p class="mt-5">Don't have Account? <a href="/signup">Signup</a></p>
 	</div>
 </div>
 

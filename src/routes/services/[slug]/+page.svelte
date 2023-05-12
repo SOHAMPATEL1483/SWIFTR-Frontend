@@ -16,8 +16,8 @@
 </script>
 
 <div class="flex gap-28 mx-auto w-fit my-20 font-poppins">
-	<div class="my-auto">
-		<img src={data.service.image} alt="" class="object-contain w-full max-h-80 rounded-md" />
+	<div class="my-auto w-1/2">
+		<img src={data.service.image} alt="" class="object-contain w-full rounded-md" />
 	</div>
 	<div class="my-auto">
 		<p class="unstyled text-3xl font-semibold text-center mb-5">{data.service.name}</p>
@@ -44,6 +44,11 @@
 			<form action="?/AddCartItem" method="post" use:enhance>
 				<button type="submit" class="btn btn-lg variant-soft-secondary">Add to Cart</button>
 			</form>
+			{#if data.user._id === data.service.user._id || data.user.roles === 'admin'}
+				<form action="?/RemoveService" method="post" use:enhance>
+					<button type="submit" class="btn btn-lg variant-filled-error">Remove Service</button>
+				</form>
+			{/if}
 		</div>
 	</div>
 </div>
@@ -83,3 +88,7 @@
 		<p class="mb-16">No reviews on this service</p>
 	{/each}
 </div>
+
+<pre>
+    {JSON.stringify(data, null, 2)}
+</pre>
