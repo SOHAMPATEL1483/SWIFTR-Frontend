@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import API_URL from '../../../stores/store';
 
@@ -27,5 +27,7 @@ export const actions: Actions = {
             body: formdata,
             credentials: 'include'
         });
+        if (res2.ok)
+            throw redirect(302, '/services')
     }
 };

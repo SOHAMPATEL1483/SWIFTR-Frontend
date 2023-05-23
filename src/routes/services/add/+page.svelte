@@ -4,6 +4,26 @@
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 
+	let categories = [
+		'cleaning',
+		'plumbing',
+		'electrician',
+		'carpentry',
+		'gardening',
+		'painting',
+		'pest control',
+		'beauty',
+		'fitness',
+		'tutoring',
+		'photography',
+		'repair',
+		'handyman',
+		'moving',
+		'massage',
+		'therapy',
+		'other'
+	];
+
 	// export let form: ActionData;
 	//@ts-ignore
 	// $: if (form) toastStore.trigger({ message: form?.msg, background: 'variant-filled-error' });
@@ -31,13 +51,11 @@
 			</label>
 			<label class="category">
 				<span>Category</span>
-				<input
-					class="input rounded-md"
-					type="text"
-					placeholder="category"
-					name="category"
-					required
-				/>
+				<select class="select" name="category" required>
+					{#each categories as c}
+						<option value={c}>{c}</option>
+					{/each}
+				</select>
 			</label>
 			<label class="price">
 				<span>price</span>
@@ -63,6 +81,7 @@
 		margin-bottom: 0.75rem /* 20px */;
 	}
 	input,
+	select,
 	textarea {
 		margin-top: 0.5rem;
 		padding: 5px;

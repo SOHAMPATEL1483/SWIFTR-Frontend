@@ -145,6 +145,6 @@
 		<p class="unstyled text-xl my-14 mx-auto italic">No Orders to show</p>
 	{/each}
 </div>
-<pre>
+<!-- <pre>
     {JSON.stringify(data, null, 4)}
-</pre>
+</pre> -->

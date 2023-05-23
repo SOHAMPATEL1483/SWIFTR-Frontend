@@ -88,7 +88,7 @@
 		<p class="mb-16">No reviews on this service</p>
 	{/each}
 </div>
-
+<!-- 
 <pre>
     {JSON.stringify(data, null, 2)}
-</pre>
+</pre> -->
