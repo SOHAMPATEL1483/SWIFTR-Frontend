@@ -22,12 +22,18 @@
 	</div>
 </div>
 <div
-	class="bgimage absolute top-0 -z-10 w-full h-full bg-no-repeat bg-cover invisible md:visible"
-	style="background-position-y: 50%; background-image: linear-gradient(rgba(30, 41, 59, 0.6),rgba(30, 41, 59, 0.6)), url(/homepage.png)"
+	class="absolute top-0 -z-10 w-full h-full bg-no-repeat bg-cover invisible md:visible"
+	style="background-position-y: 50%;"
 />
 
 <style>
-	.bgimage {
-		@apply bg-surface-50-900-token;
+	/* .bgimage {
+		 @apply bg-gradient-to-l 
+		@apply bg-[url('/homepage.png')]
+		background-image: linear-gradient(rgba(30, 41, 59, 0.6), rgba(30, 41, 59, 0.6)),
+			url(/homepage.png);
 	}
+	.g {
+		@apply bg-gradient-to-l;
+	} */
 </style>

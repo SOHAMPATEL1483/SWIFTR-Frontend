@@ -7,5 +7,6 @@ export const load: PageLoad = async ({ fetch }) =>
         credentials: 'include',
     });
     let data = await res.json();
+    data.data = data.data.filter((a: any) => a.services);
     return data;
 };

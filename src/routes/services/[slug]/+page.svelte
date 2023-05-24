@@ -19,7 +19,7 @@
 	<div class="my-auto w-1/2">
 		<img src={data.service.image} alt="" class="object-contain w-full rounded-md" />
 	</div>
-	<div class="my-auto">
+	<div class="my-auto max-w-3xl">
 		<p class="unstyled text-3xl font-semibold text-center mb-5">{data.service.name}</p>
 		<p class="unstyled italic">
 			{data.service.description}

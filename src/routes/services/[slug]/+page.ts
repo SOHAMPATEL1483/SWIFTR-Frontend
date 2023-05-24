@@ -9,7 +9,6 @@ export const load: PageLoad = async ({ fetch, params }) =>
     })
     let data = await res.json();
     data.slug = params.slug;
-
     return data;
 
 }

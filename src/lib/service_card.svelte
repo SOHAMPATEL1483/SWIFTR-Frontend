@@ -14,7 +14,7 @@
 <a class="unstyled" href={'/services/' + service['_id']}>
 	<div class="card card-hover max-w-[320px] p-5 m-5">
 		<div class="mb-5">
-			<img src={service.image} alt="" class="object-contain w-full max-h-64" />
+			<img src={service.image} alt="" class="object-contain w-full max-h-64 rounded-md" />
 		</div>
 		<div class="divide-y-2 divide-slate-600">
 			<div class="mb-3">

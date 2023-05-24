@@ -56,6 +56,6 @@
 	{/each}
 </div>
 
-<!-- <pre>
+<pre>
     {JSON.stringify(data, null, 4)}
-</pre> -->
+</pre>
